@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -7,12 +6,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Lets get started</h2>
+          <h2>Voicercise</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <iframe width="560" height="315" 
+        src="https://www.youtube.com//embed/watch?v=zGxlamMQ5XI&list=RDMMzGxlamMQ5XI" 
+        frameBorder="0" allowFullScreen className="video"></iframe>
+
       </div>
     );
   }
