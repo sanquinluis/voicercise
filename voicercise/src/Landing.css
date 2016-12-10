@@ -3,6 +3,7 @@
 }
 
 .App-header {
+  
   background-color: #222;
   height: 50px;
   padding: 20px;
@@ -16,4 +17,12 @@
 }
 .video {
   padding-top: 80px;
+}
+.singIn {
+  margin-right: 10px;
+  text-decoration: none;
+
+}
+.signUp {
+  text-decoration: none;
 }
