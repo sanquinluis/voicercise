@@ -1,9 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Landing from './Landing';
-import './index.css';
-
-ReactDOM.render(
-  <Landing />,
-  document.getElementById('root')
-);
+export MasterPage from './MasterPage'
+export IndexPage from './IndexPage'
+export LoginPage from './LoginPage'
+export RegistrationPage from './RegistrationPage'
+export ProfilePage from './ProfilePage'
