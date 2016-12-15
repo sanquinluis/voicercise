@@ -27,6 +27,11 @@ export default class Header extends React.Componet {
     			  <Link to="/register">Create Account</Link>
   				 </li>
 			    </NotAuthenticated>
+			    <Authenticated>
+			     <li>
+			      <LogoutLink />
+			     </li>
+			    </Authenticated>
 
 			   </ul>
 			  </div>
