@@ -3,19 +3,20 @@ var webpack = require('webpack');
  
 module.exports = {
   entry: [
-    './src/app'
+    './src/js/app.js'
   ],
   devtool: 'eval-source-map',
   output: {
-    path: __dirname,
-    filename: 'app.js',
-    publicPath: '/js/'
+    path: __dirname +'/build',
+    filename: 'bundle.js',
+    
   },
   module: {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src/js')
+      presets: ["stage-0", "es2015", "react"]
+      // include: path.join(__dirname, 'src/js')
     }]
   }
 };

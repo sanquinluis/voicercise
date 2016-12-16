@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find your range</title>
+</head>
+<body>
+
+	<div id="boo"></div>
+	<canvas id="myCanvas" width="500" height="300"></canvas>
+
+	<script type="text/javascript" src="https://unpkg.com/vexflow/releases/vexflow-min.js"></script>
+	<script type="text/javascript">
+	VF = Vex.Flow;
+
+	// Create an SVG renderer and attach it to the DIV element named "boo".
+	// var div = document.getElementById("boo")
+	// var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+
+	var div = document.getElementById("myCanvas")
+	var renderer = new Vex.Flow.Renderer(div, Vex.Flow.Renderer.Backends.CANVAS); 
+
+	// Configure the rendering context.
+	renderer.resize(500, 500);
+	var context = renderer.getContext();
+	context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+
+	// Create a stave of width 400 at position 10, 40 on the canvas.
+	var stave = new VF.Stave(10, 40, 400);
+
+	// Add a clef and time signature.
+	stave.addClef("treble").addTimeSignature("4/4");
+
+	// Connect it to the rendering context and draw!
+	stave.setContext(context).draw();
+
+	//bass clef staff
+
+	var stave2 = new VF.Stave(10, 100, 400);
+
+	stave2.addClef("bass").addTimeSignature("4/4");
+
+	stave2.setContext(context).draw();
+
+	//How to draw notes letter/code
+	var notes = [
+	  // A quarter-note C.
+	  new VF.StaveNote({clef: "treble", keys: ["c#/4"], duration: "w"}).addAccidental(0, new VF.Accidental("#")),
+
+	  // // A quarter-note D.
+	  // new VF.StaveNote({clef: "treble", keys: ["db/4"], duration: "q" }),
+
+	  // // A quarter-note rest. Note that the key (b/4) specifies the vertical
+	  // // position of the rest.
+	  // new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "qr" }),
+
+	  // // A C-Major chord.
+	  // new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "q" })
+	];
+
+	// Create a voice in 4/4 and add above notes
+	var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+	voice.addTickables(notes);
+
+	// Format and justify the notes to 400 pixels.
+	var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+
+	// Render voice
+	voice.draw(context, stave);
+	</script>
+
+</body>
+</html>

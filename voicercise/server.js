@@ -20,7 +20,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 });
 
  app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '/html/index.html'));
+  res.sendFile(path.join(__dirname, '/src/html/index.html'));
 });
   app.use('/css', express.static(__dirname + './src/css'));
 
