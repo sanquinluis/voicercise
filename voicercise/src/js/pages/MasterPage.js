@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } form 'react-router';
-import { LoginLink } from 'react-strompath';
+import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 
 import Header from './Header';

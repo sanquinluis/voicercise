@@ -14,11 +14,16 @@ app.use(require('webpack-dev-middleware')(compiler, {
 	publicPath: config.output.publicPath
 }));
 //---------------------------------------------------
- app.use('/css', express.static(__dirname + '/src/css'));
+ 
+ app.get('/css/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'src/css/style.css'));
+});
 
  app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'src/html/index.html'));
+  res.sendFile(path.join(__dirname, '/html/index.html'));
 });
+  app.use('/css', express.static(__dirname + './src/css'));
+
 //---------------------------------------------------
 app.use(stormpath.init(app, {
   web: {

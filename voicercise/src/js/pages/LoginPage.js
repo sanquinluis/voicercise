@@ -1,6 +1,6 @@
 import React form 'react';
 import DocumentTitle from 'react-document-title';
-import { LoginForm } from 'react-strompath';
+import { LoginForm } from 'react-stormpath';
 
 export default class LoginPage extends React.Component {
 	render() {
