@@ -4,6 +4,7 @@ import Landing from './pages/Landing.js'
 import Login from './pages/LoginPage.js'
 import SignUp from './pages/RegistrationPage.js'
 import Home from './pages/MasterPage.js'
+import Profile from './pages/ProfilePage.js'
 // import ReactStormpath, { Router, AuthenticatedRoute, LoginLink } from 'react-stormpath';
 import { Router, Route, browserHistory } from 'react-router'
 import { MasterPage, IndexPage, LoginPage, RegistrationPage, ProfilePage } from './pages';
@@ -17,6 +18,7 @@ ReactDOM.render(
 		<Route path="/login" component={Login} />
 		<Route path="/signup" component={SignUp} />
 		<Route path="/home" component={Home} />
+		<Route path="/profile" component={Profile} />
 	</Router>
 	,
 	// <HomeRoute history={browserHistory}>

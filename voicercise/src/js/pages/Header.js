@@ -17,24 +17,24 @@ export default class Header extends React.Component {
 							<span className="icon-bar"></span>
 						</button>
 						{/*Homepage link*/}
-						<a className="navbar-brand" href="#">Voicercize</a> 
+						<a className="navbar-brand" href="/home">Voicercize</a> 
 					</div>
 
 					{/*left of nav bar*/}
 					<ul className="nav navbar-nav">
 						<li><a href="#">Exercises</a></li>
-						<li><a href="#">Profile</a></li>
+						<li><a href="/profile">Profile</a></li>
 					</ul>
 
 					{/*right of nav bar*/}
 					<ul className="nav navbar-nav navbar-right">
-						<li><a href="#">Logout</a></li>
+						<li><a href="/">Logout</a></li>
 					</ul>
 
 					{/*end of container*/}
 
 				</div>
-				{/*end of nav bar*/} 				
+					{/*end of nav bar*/} 			
 			</nav> 
 		);
 	}
