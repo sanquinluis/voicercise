@@ -56,7 +56,7 @@ export default class RegistrationPage extends React.Component {
 	</div>
 	<ul>
 		<li><a href='/login'>Sign-in</a></li>
-		<li><a>Forgot Password</a></li>
+		<li><a href="/forgot">Forgot Password</a></li>
 		<li><a href="/">Return to landing page</a></li>
 	</ul>
 </div>

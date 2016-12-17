@@ -54,7 +54,7 @@ export default class LoginPage extends React.Component {
 
 				 <ul>
 				 <li><a href="\signup">Sign-up</a></li>
-				 <li><a>Forgot Password</a></li>
+				 <li><a href="\forgot">Forgot Password</a></li>
 				 <li><a href="\">Return to landing page</a></li>
 				 </ul>
 			 </div>
