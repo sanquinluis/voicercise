@@ -11,6 +11,7 @@
     "webpack-dev-middleware": "^1.8.4"
   },
   "dependencies": {
+    "amcharts3": "github:amcharts/amcharts3",
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.9",
     "babel-plugin-react-transform": "^2.0.2",
