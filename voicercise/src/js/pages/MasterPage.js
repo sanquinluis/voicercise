@@ -3,12 +3,16 @@ import Header from './Header.js'
 import { Link } from 'react-router';
 import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
+import AmCharts from 'amcharts3'
 
 // import AmCharts from 'amcharts'
 
 
 export default class is extends React.Component {
 
+    componentDidMount(){
+        console.log(Header);
+    }
 
 	render() {
 		return (
