@@ -1,6 +1,8 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { RegistrationForm } from 'react-stormpath';
+import { Link } from 'react-router';
+
 
 export default class RegistrationPage extends React.Component {
 	render() {
@@ -10,7 +12,9 @@ export default class RegistrationPage extends React.Component {
 				<div className="container">
 					<div className="well clearfix">
 						<h1>Sign up</h1>
-						<form className="form-horizontal">
+
+						<RegistrationForm />
+						{/*<form className="form-horizontal">
 
 							<div className="form-group">
 								<label htmlFor="signup-name" className="col-sm-2 control-label">Name</label>
@@ -43,12 +47,12 @@ export default class RegistrationPage extends React.Component {
 							<div className="col-sm-offset-2 col-sm-10">
 								<input type="submit" className="btn btn-default" value="Sign-Up" />
 							</div>
-						</form>
+						</form>*/}
 					</div>
 					<ul>
-						<li><a href='/login'>Sign-in</a></li>
-						<li><a href="/forgot">Forgot Password</a></li>
-						<li><a href="/">Return to landing page</a></li>
+						<li><Link to='/login'>Sign-in</Link></li>
+						<li><Link to="/forgot">Forgot Password</Link></li>
+						<li><Link to="/">Return to landing page</Link></li>
 					</ul>
 				</div>
 			</DocumentTitle>

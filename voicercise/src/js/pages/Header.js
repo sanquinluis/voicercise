@@ -1,11 +1,11 @@
 import React from 'react';
-// import { Link } from 'react-router';
-// import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
+import { Link } from 'react-router';
+import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
 
 export default class Header extends React.Component {
 	render() {
 		return(
-		
+		<Authenticated>
 			<nav className="navbar navbar-default navbar-static-top">
 				<div className="container-fluid">
 					<div className="navbar-header">
@@ -22,13 +22,14 @@ export default class Header extends React.Component {
 
 					{/*left of nav bar*/}
 					<ul className="nav navbar-nav">
-						<li><a href="#">Exercises</a></li>
-						<li><a href="/profile">Profile</a></li>
+						<li><Link to="#">Exercises</Link></li>
+						<li><Link to="/profile">Profile</Link></li>
 					</ul>
 
 					{/*right of nav bar*/}
 					<ul className="nav navbar-nav navbar-right">
-						<li><a href="/">Logout</a></li>
+						{/*<li><a href="/">Logout</a></li>*/}
+						<li><LogoutLink /></li>
 					</ul>
 
 					{/*end of container*/}
@@ -36,6 +37,7 @@ export default class Header extends React.Component {
 				</div>
 					{/*end of nav bar*/} 			
 			</nav> 
+		</Authenticated>
 		);
 	}
 }

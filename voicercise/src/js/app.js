@@ -1,37 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Landing from './pages/Landing.js'
-import Login from './pages/LoginPage.js'
-import SignUp from './pages/RegistrationPage.js'
+import LoginPage from './pages/LoginPage.js'
+import RegistrationPage from './pages/RegistrationPage.js'
 import Home from './pages/MasterPage.js'
 import Profile from './pages/ProfilePage.js'
 import Forgot from './pages/ForgotPage.js'
-// import ReactStormpath, { Router, AuthenticatedRoute, LoginLink } from 'react-stormpath';
-import { Router, Route, browserHistory } from 'react-router'
-import { MasterPage, IndexPage, LoginPage, RegistrationPage, ProfilePage } from './pages';
+import { IndexRoute, Route, browserHistory } from 'react-router';
+import ReactStormpath, { Router, HomeRoute, LoginRoute, AuthenticatedRoute } from 'react-stormpath';
 
 
-// ReactStormpath.init();
+ReactStormpath.init();
 
 ReactDOM.render(
 	<Router history={browserHistory}>
-		<Route path="/" component={Landing} />
-		<Route path="/login" component={Login} />
-		<Route path="/signup" component={SignUp} />
-		<Route path="/home" component={Home} />
-		<Route path="/profile" component={Profile} />
-		<Route path="/forgot" component={Forgot} />
+		<HomeRoute path='/' component={Landing} />
+		<Route path='/register' component={RegistrationPage} />
+		<Route path='/forgot' component={Forgot} />
+		<LoginRoute path='/login' component={LoginPage} />
+		<AuthenticatedRoute>
+		  <HomeRoute path='/home' component={Home} />
+		</AuthenticatedRoute>
+
+
 	</Router>
 	,
-	// <HomeRoute history={browserHistory}>
-		// <Route path='/' component={MasterPage}>
-			// <IndexRoute component={IndexPage} />
-			// <LoginRoute path='/login' component={LoginPage} />
-			// <Route path='/register' component={RegistrationPage} />
-			// <AuthenticatedRoute> 
-			 // <HomeRoute path='/profile' component={ProfilePage} />
-			// </AuthenticatedRoute>
-		// </Route>
-	// </HomeRoute>,
+	
 	document.getElementById('app-container') 
 	);

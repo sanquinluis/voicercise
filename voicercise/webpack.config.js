@@ -28,8 +28,8 @@ module.exports = {
 
   // Then output into this file
   output: {
-    path:"/",
-    filename: "build/bundle.js"
+    path:"./build/",
+    filename: "bundle.js"
   },
 
 

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router'
+import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
+
 // import '../../css/style.css';
 
 class Landing extends Component {
@@ -20,12 +23,12 @@ class Landing extends Component {
           frameBorder="0" allowFullScreen className="video" ></iframe>
         </div>
         <div>
-          <a href="/login">
-          <span className="singIn" style={{ marginRight: '10px',textDecoration: 'none'}}>Sign In</span>
-          </a>
-          <a href="/signup">
-          <span className="signUp" style={{textDecoration: 'none'}}>Sign up</span>
-          </a>
+          
+          <span className="signIn" style={{ marginRight: '10px',textDecoration: 'none'}}><LoginLink>Sign In</LoginLink></span>
+         
+          
+          <span className="signUp" style={{textDecoration: 'none'}}><Link to="/register">Sign Up</Link></span>
+          
         </div>
       </div>
     );

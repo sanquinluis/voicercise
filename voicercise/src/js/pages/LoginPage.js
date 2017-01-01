@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import DocumentTitle from 'react-document-title';
 import { LoginForm } from 'react-stormpath';
 
@@ -11,6 +12,8 @@ export default class LoginPage extends React.Component {
 					<div className="well clearfix box">
 						<h1>Sign in</h1>
 						<div className="vertical-center">
+							<LoginForm />
+							{/*
 							<form className="form-horizontal">
 								<div className="form-group">
 									<label htmlFor="signin-email" className="col-sm-2 control-label">Email</label>
@@ -38,14 +41,15 @@ export default class LoginPage extends React.Component {
 								<div className="col-sm-offset-2 col-sm-10">
 									<input type="submit" className="btn btn-default" value="Sign-In" />
 								</div>
-							</form>
+							</form>*/}
+
 						</div>
 					</div>
 
 					<ul>
-						<li><a href="\signup">Sign-up</a></li>
-						<li><a href="\forgot">Forgot Password</a></li>
-						<li><a href="\">Return to landing page</a></li>
+						<li><Link to="/register">Sign-up</Link></li>
+						<li><Link to="/forgot">Forgot Password</Link></li>
+						<li><Link to="/">Return to landing page</Link></li>
 					</ul>
 				</div>
 			</DocumentTitle>
