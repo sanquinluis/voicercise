@@ -17,7 +17,7 @@ export default class Header extends React.Component {
 							<span className="icon-bar"></span>
 						</button>
 						{/*Homepage link*/}
-						<a className="navbar-brand" href="/home">Voicercize</a> 
+						<Link className="navbar-brand" to="/home">Voicercize</Link> 
 					</div>
 
 					{/*left of nav bar*/}
@@ -28,7 +28,6 @@ export default class Header extends React.Component {
 
 					{/*right of nav bar*/}
 					<ul className="nav navbar-nav navbar-right">
-						{/*<li><a href="/">Logout</a></li>*/}
 						<li><LogoutLink /></li>
 					</ul>
 
