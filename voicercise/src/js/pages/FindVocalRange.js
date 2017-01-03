@@ -1,4 +1,5 @@
 import Tone from 'tone'
+import Vex from 'vexflow'
 import React from 'react';
 import Header from './Header.js'
 import { Link } from 'react-router';
@@ -6,9 +7,98 @@ import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 
 class StaffDisplay extends React.Component{
+	constructor(props){
+		super(props);
+		
+
+		this.state = {
+			note: "C",
+			octave: "4"
+		}
+	}
+
+
+
+	componentDidMount(){
+
+		var VF = Vex.Flow;
+		var renderer
+		var context;
+		var treble_staff;
+		var bass_staff;
+		
+		
+		this.drawGrandStaff = function(){
+			var display = document.getElementById("myCanvas")
+			var renderer = new VF.Renderer(display, VF.Renderer.Backends.CANVAS); 
+
+			renderer.resize(450,300);
+
+			context = renderer.getContext();
+			context.clearRect(0, 0, display.width, display.height);
+			context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+			
+			treble_staff = new VF.Stave(20, 40, 300);
+			bass_staff = new VF.Stave(20, 150, 300);
+
+			treble_staff.addClef("treble").addTimeSignature("4/4");
+			bass_staff.addClef("bass").addTimeSignature("4/4");
+
+			var brace = new VF.StaveConnector(treble_staff, bass_staff).setType(3); // 3 = brace
+			var lineRight = new VF.StaveConnector(treble_staff, bass_staff).setType(6);
+			var lineLeft = new VF.StaveConnector(treble_staff, bass_staff).setType(1);
+
+
+			treble_staff.setContext(context).draw();
+			bass_staff.setContext(context).draw();
+
+			brace.setContext(context).draw();
+			lineLeft.setContext(context).draw();
+			lineRight.setContext(context).draw();
+		}.bind(this)
+
+		console.log(this);
+
+		this.drawNote = function(note_name, octave){
+		
+			// var note_name = this.state.note;
+			// var octave = this.state.octave;
+
+			this.drawGrandStaff()
+			
+			var clef_name = (octave < 4) ? "bass" : "treble";
+			var stave = (octave < 4) ? bass_staff : treble_staff;
+
+			if(note_name.length == 2){
+				var notes = [new VF.StaveNote({clef: clef_name, keys: [note_name+"/"+octave], duration: "w" }).addAccidental(0, new VF.Accidental("#"))]
+			}
+			else{
+				var notes = [new VF.StaveNote({clef: clef_name, keys: [note_name+"/"+octave], duration: "w" })]
+			}
+			var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+			voice.addTickables(notes);
+
+			var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+
+			voice.draw(context, stave);
+		
+		}.bind(this);
+
+		this.drawNote(this.props.note, this.props.octave);
+
+	}
+
+	componentWillReceiveProps(nextProps){
+		if(nextProps.note != this.props.note){
+			this.drawNote(nextProps.note, nextProps.octave);
+		}
+	}
+
 	render(){
+
 		return(
-			<div>Hello World</div>
+			<canvas id="myCanvas" style={{width:'450px', height:'300px'}}></canvas>
+
 			)
 	}
 }
@@ -113,7 +203,7 @@ export default class FindVocalRange extends React.Component {
 	render(){
 		return(
 			<div>
-				<StaffDisplay />
+				<StaffDisplay note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
 				<NoteDisplay display={this.displayNote} />
 				<button onMouseDown={this.playTone} onMouseUp={this.stopTone}>Click this</button>
 				<button onClick={this.halfstep}>I can sing this easy</button>
