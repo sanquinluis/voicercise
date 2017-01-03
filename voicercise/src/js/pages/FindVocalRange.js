@@ -127,7 +127,8 @@ export default class FindVocalRange extends React.Component {
 					  	synth: new Tone.Synth().toMaster(),
 					  	isDesc: true,
 					  	lowestnote: 'C0',
-					  	highestnote: 'B10'
+					  	highestnote: 'B10',
+					  	rangeFound: false
 					  };
 		this.playTone = this.playTone.bind(this);
 		this.stopTone = this.stopTone.bind(this);
@@ -145,7 +146,18 @@ export default class FindVocalRange extends React.Component {
 	}
 
 	displayNote(){
-		return <p>{this.state.notes[this.state.noteIndex]+this.state.octave}</p>
+		if(!this.state.rangeFound)
+			return <p>{this.state.notes[this.state.noteIndex]+this.state.octave}</p>
+		else return (
+			<div>
+				<p> It appears your range is from {this.state.lowestnote} to {this.state.highestnote}.
+					Great! With this info excises will be tailored to your current range. If you feel
+					this is inaccurate feel free to adjust or retake the test. This important we don't 
+					want you to strain or hurt youself so make sure you are comfortable in singing the
+					high and lower notes. When you are satisfied Click the comfirm button to continue
+					get started on your vocal exercises.
+				</p>
+			</div>)
 	}
 
 	stopTone(){
@@ -196,15 +208,18 @@ export default class FindVocalRange extends React.Component {
 							});
 		}
 		else{
-
+			this.setState({rangeFound:true})
 		}
 	}
+
+
 
 	render(){
 		return(
 			<div>
 				<StaffDisplay note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
 				<NoteDisplay display={this.displayNote} />
+				
 				<button onMouseDown={this.playTone} onMouseUp={this.stopTone}>Click this</button>
 				<button onClick={this.halfstep}>I can sing this easy</button>
 				<button onClick={this.goUp}>Can't sing anymore more</button>
