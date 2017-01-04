@@ -22,7 +22,7 @@ export default class Header extends React.Component {
 
 					{/*left of nav bar*/}
 					<ul className="nav navbar-nav">
-						<li><Link to="#">Exercises</Link></li>
+						<li><Link to="/exercises">Exercises</Link></li>
 						<li><Link to="/profile">Profile</Link></li>
 					</ul>
 

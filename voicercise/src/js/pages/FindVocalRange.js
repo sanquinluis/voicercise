@@ -12,8 +12,8 @@ class StaffDisplay extends React.Component{
 		
 
 		this.state = {
-			note: "C",
-			octave: "4"
+			note: this.props.note,
+			octave: this.props.octave
 		}
 	}
 
@@ -121,13 +121,12 @@ export default class FindVocalRange extends React.Component {
 	    super(props);
 	    this.state = {
 	    				notes: ['C','C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
-	    				noteIndex: 5,
+	    				synth: new Tone.Synth().toMaster(),
+	    				noteIndex: 0,
 	    				octave: 4,
-	    				isSharp: false,
-					  	synth: new Tone.Synth().toMaster(),
 					  	isDesc: true,
-					  	lowestnote: 'C0',
-					  	highestnote: 'B10',
+					  	lowestnote: 'C4',
+					  	highestnote: 'C4',
 					  	rangeFound: false
 					  };
 		this.playTone = this.playTone.bind(this);
@@ -135,6 +134,8 @@ export default class FindVocalRange extends React.Component {
 		this.halfstep = this.halfstep.bind(this);
 		this.displayNote = this.displayNote.bind(this);
 		this.goUp = this.goUp.bind(this);
+		this.startover = this.startover.bind(this);
+
   	}
 
   	playTone(){
@@ -203,7 +204,7 @@ export default class FindVocalRange extends React.Component {
 		if(this.state.isDesc){
 			this.setState({
 							isDesc: false,
-							noteIndex: 5,
+							noteIndex: 0,
 							octave: 4
 							});
 		}
@@ -213,18 +214,42 @@ export default class FindVocalRange extends React.Component {
 	}
 
 
+	startover(){
+		this.setState({
+			noteIndex: 0,
+			octave: 4,
+		  	isDesc: true,
+		  	lowestnote: 'C4',
+		  	highestnote: 'C4',
+		  	rangeFound: false
+		})
+	}
 
 	render(){
 		return(
-			<div>
-				<StaffDisplay note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
-				<NoteDisplay display={this.displayNote} />
-				
-				<button onMouseDown={this.playTone} onMouseUp={this.stopTone}>Click this</button>
-				<button onClick={this.halfstep}>I can sing this easy</button>
-				<button onClick={this.goUp}>Can't sing anymore more</button>
-				<button onClick={this.goUp}>To hard to sing</button>
-			</div>
+			<DocumentTitle title="Voicercise / Find your range">
+
+				<div>
+					<Header note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
+					
+					<StaffDisplay note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
+					<NoteDisplay display={this.displayNote} />
+					
+					{!this.state.rangeFound ?
+					<div>
+						<button onMouseDown={this.playTone} onMouseUp={this.stopTone}>Click this</button>
+						<button onClick={this.halfstep}>I can sing this easy</button>
+						<button onClick={this.goUp}>Can't sing anymore more</button>
+						<button onClick={this.goUp}>To hard to sing</button>
+					</div>
+					:
+					<div>
+						<button onClick={this.startover}>Start over</button>
+						<Link to="#"><button>Confirm</button></Link>
+					</div>
+					}
+				</div>
+			</DocumentTitle>
 		)
 
 	}
