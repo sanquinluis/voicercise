@@ -21,13 +21,12 @@ ReactDOM.render(
 		<Route path='/forgot' component={Forgot} />
 		<LoginRoute path='/login' component={LoginPage} />
 		<AuthenticatedRoute>
-		  <HomeRoute path='/home' component={Home} />
+			<HomeRoute path='/home' component={Home} />
 		</AuthenticatedRoute>
 		<AuthenticatedRoute path='/profile' component={Profile} />
 		<AuthenticatedRoute path='/exercises' component={ExercisePage} />
 		<AuthenticatedRoute path='/range' component={FindVocalRange} />
 	</Router>
-
 	// <FindVocalRange />
 	,
 	
