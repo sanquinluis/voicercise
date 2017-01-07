@@ -1,7 +1,0 @@
-# client:
-#   apiKey:
-#     id: 3heghs88y7nfiiQUj4dE0i
-#     secret: f9UBo1HDhpGzwDuOLxZgCUaltBEdw8pfMuUuF8rZJgI
-# application:
-#   # name: VoicerciseApp
-#   href: https://api.stormpath.com/v1/applications/3heghs88y7nfiiQUj4dE0i

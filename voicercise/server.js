@@ -15,6 +15,9 @@ var app = express();
 
 app.use(express.static("./"));
 
+app.use(stormpath.init(app, {
+  website:true
+}));
 
 app.get('*', function(req, res){
   res.sendFile(__dirname+'/index.html');
