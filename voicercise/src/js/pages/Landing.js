@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router'
 import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
 
-// import '../../css/style.css';
+import css from  '../../css/header.css';
 
 class Landing extends Component {
   render() {
     return (
-      <div className="App" style={{textAlign: 'center'}}>
+      <div className="App" >
         <div className="App-header" style={{
   backgroundColor: '#222',
   height: '100px',

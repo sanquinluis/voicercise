@@ -13,7 +13,7 @@ var app = express();
 //     res.sendFile(path.join(__dirname, "/index.html"))
 // })
 
-app.use(express.static("./"));
+app.use(express.static('./'));
 
 app.use(stormpath.init(app, {
   website:true

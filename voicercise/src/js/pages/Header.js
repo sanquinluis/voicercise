@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
+// import css from '../../css/style.css';
+import css2 from '../../css/header.css';
 
 export default class Header extends React.Component {
 	render() {
 		return(
 		<Authenticated>
-			<nav className="navbar navbar-default navbar-static-top">
-				<div className="container-fluid">
+			<nav className="navbar navbar-default navbar-static-top ">
+				<div className="container-fluid ">
 					<div className="navbar-header">
 						{/*Collaped button*/}
 						<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

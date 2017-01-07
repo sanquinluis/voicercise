@@ -24,12 +24,12 @@ var webpack = require('webpack');
 module.exports = {
   
   // This code will be compiled 
-  entry: "./src/js/app.js",
+  entry: './src/js/app.js',
 
   // Then output into this file
   output: {
-    path:"./build/",
-    filename: "bundle.js"
+    path:'./build/',
+    filename: 'bundle.js'
   },
 
 
@@ -40,10 +40,17 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
+        include: __dirname + '/src',
         query: {
           // These are the specific transformations we'll be using. 
           presets: ['react', 'es2015']
+
         }
+      },
+      {
+        test: /\.css/,
+        loaders: ["style", "css?modules"],
+        include: __dirname + '/src/css'
       }
     ]
   }
