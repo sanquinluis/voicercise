@@ -5,6 +5,9 @@ import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 import AmCharts from 'amcharts3'
 
+import css from '../../css/style.css';
+
+
 // import AmCharts from 'amcharts'
 
 

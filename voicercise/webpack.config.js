@@ -48,10 +48,25 @@ module.exports = {
         }
       },
       {
-        test: /\.css/,
-        loaders: ["style", "css?modules"],
+        test: /\.css$/,
+        loaders: ["style","css?modules"],
         include: __dirname + '/src/css'
+      }, 
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url-loader',
+          options: {
+            limit: 25000
+          }
+      }, 
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'file-loader',
+          options: {
+            name: '[path][name].[hash].[ext]'
+          }
       }
+
     ]
   }
 

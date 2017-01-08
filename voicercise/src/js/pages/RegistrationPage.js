@@ -3,6 +3,9 @@ import DocumentTitle from 'react-document-title';
 import { RegistrationForm } from 'react-stormpath';
 import { Link } from 'react-router';
 
+import css from '../../css/style.css';
+
+
 
 export default class RegistrationPage extends React.Component {
 	render() {

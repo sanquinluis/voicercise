@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import DocumentTitle from 'react-document-title';
 import { LoginForm } from 'react-stormpath';
 
+import css from '../../css/style.css';
+
 export default class LoginPage extends React.Component {
 	render() {
 		return (

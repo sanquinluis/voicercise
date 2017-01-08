@@ -3,7 +3,8 @@ import Documentitle from 'react-document-title';
 import { UserProfileForm } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 import Header from './Header.js'
-import css from '../../css/header.css';
+
+import css from '../../css/style.css';
 
 export default class ProfilePage extends React.Component {
 	render() {
