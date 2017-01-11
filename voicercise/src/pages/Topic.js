@@ -6,7 +6,7 @@ export default class Topic extends React.Component{
 	render(){
 		return(
 			<div>
-				<Header />
+				
 				<table>
 					<tbody>
 						<tr>

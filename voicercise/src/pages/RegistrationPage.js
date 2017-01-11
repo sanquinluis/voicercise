@@ -52,7 +52,7 @@ export default class RegistrationPage extends React.Component {
 					<ul>
 						<li><Link to='/login'>Sign-in</Link></li>
 						<li><Link to="/forgot">Forgot Password</Link></li>
-						<li><Link to="/">Return to landing page</Link></li>
+						<li><Link to="/landing">Return to landing page</Link></li>
 					</ul>
 				</div>
 			</DocumentTitle>

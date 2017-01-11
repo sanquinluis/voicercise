@@ -11,7 +11,6 @@ export default class Exersices extends React.Component{
 
 			<DocumentTitle title="Voicercise / Exersices">
 				<div>
-					<Header />
 					<h1>Exersices</h1>
 					<Link to='/range'>Vocal Range Test</Link>
 					<Link to='#'>Exercise #</Link>

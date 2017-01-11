@@ -5,13 +5,21 @@ import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 import AmCharts from 'amcharts3'
 
+import axios from "axios";
+
 // import AmCharts from 'amcharts'
 
 
 export default class is extends React.Component {
 
     componentDidMount(){
-        console.log(Header);
+        axios.get("/secret")
+        .then(
+        	function(response)
+        	{
+        		console.log(response)
+        	}
+	    )
     }
 
 	render() {
@@ -19,7 +27,7 @@ export default class is extends React.Component {
 			<DocumentTitle title='My React App'>
 				<div>
 					
-				<Header />
+				
 					
 					<div id="chartDiv" style={{width:'100%',height:'300px'}}></div>
 					<div className="col-md-6">

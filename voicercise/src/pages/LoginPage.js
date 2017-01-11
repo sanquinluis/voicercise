@@ -48,8 +48,8 @@ export default class LoginPage extends React.Component {
 
 					<ul>
 						<li><Link to="/register">Sign-up</Link></li>
-						<li><Link to="/forgot">Forgot Password</Link></li>
-						<li><Link to="/">Return to landing page</Link></li>
+						{/*<li><Link to="/forgot">Forgot Password</Link></li>*/}
+						<li><Link to="/landing">Return to landing page</Link></li>
 					</ul>
 				</div>
 			</DocumentTitle>

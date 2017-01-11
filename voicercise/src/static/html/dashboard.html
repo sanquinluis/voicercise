@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<title>Welcome User</title>
+
+	<!-- BootStrap -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Css -->
+
+</head>
+	<body>
+
+	<!-- Nav bar -->
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- Takes us to home page -->
+				<a class="navbar-brand" href="#">Voicercize</a> 
+			</div>
+
+			<!-- left of nav bar -->
+			<ul class="nav navbar-nav">
+				<li><a href="#">Exercises</a></li>
+				<li><a href="#">Profile</a></li>
+			</ul>
+
+			<!-- Right of navbar -->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Logout</a></li>
+			</ul>
+		</div> <!-- Continaer fluid end -->
+	</nav> <!-- End of Navbar -->
+
+	<!-- chart-->
+	<!-- <div id="chart1div" style="width:100%;height:300px;"></div> -->
+	<div id="chart2div" style="width:100%;height:300px;"></div>
+<div class="col-md-6">
+	<h1>Forums</h1>
+	<div id="forums"></div>
+</div>
+
+<div class="col-md-6">
+	<h1>Updates</h1>
+	<div id="updates"></div>
+</div>
+<!-- Styles -->
+
+
+<!-- Resources -->
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<!-- Chart code -->
+<script type="text/javascript">
+// var chartData = [{
+//         year: 1999,
+//         value: 7
+//     }, {
+//         year: 2000,
+//         value: 68
+//     }, {
+//         year: 2001,
+//         value: 73
+//     }, {
+//         year: 2002,
+//         value: 27
+//     }, {
+//         year: 2003,
+//         value: 45
+//     }, {
+//         year: 2004,
+//         value: 70
+//     }];
+
+// var AMCHART_SERIAL_CONFIG2 = {
+//     // "theme": "light",
+//     "type": "serial",
+//     "marginRight": 80,
+//     "autoMarginOffset": 20,
+//     "marginTop":20,
+//     "dataProvider": chartData,
+//     "valueAxes": [{
+//     	maximum: 0,
+//         minimum: 100,
+//         "position": "left",
+//         "title": "Score",
+//         // "id": "v1",
+//         // "axisAlpha": 0.1
+//     }],
+//     "graphs": [{
+//         "useNegativeColorIfDown": true,
+//         "balloonText": "[[category]]<br><b>value: [[value]]</b>",
+//         "bullet": "round",
+//         "bulletBorderAlpha": 1,
+//         "bulletBorderColor": "#FFFFFF",
+//         "hideBulletsCount": 50,
+//         "lineThickness": 2,
+//         "lineColor": "#fdd400",
+//         "negativeLineColor": "#67b7dc",
+//         "valueField": "value"
+//     }],
+//     // "chartScrollbar": {
+//     //     "scrollbarHeight": 5,
+//     //     "backgroundAlpha": 0.1,
+//     //     "backgroundColor": "#868686",
+//     //     "selectedBackgroundColor": "#67b7dc",
+//     //     "selectedBackgroundAlpha": 1
+//     // },
+//     // "chartCursor": {
+//     //     "valueLineEnabled": true,
+//     //     "valueLineBalloonEnabled": true
+//     // },
+//     "categoryField": "year",
+//     "categoryAxis": {
+//         // "parseDates": true,
+//         // "axisAlpha": 0,
+//         // "minHorizontalGap": 60
+//         "gridPosition": "start",
+//         "labelRotation": 45
+//     }
+// }
+
+// var AMCHART_SERIAL_CONFIG = {
+//     "type": "serial",
+//     "startDuration": 0.5,   // loading animation, in second
+    
+//     // y axis/value axis
+//     "valueAxes": [{
+//         maximum: 0,
+//         minimum: 100,
+//         "position": "left",
+//         "title": "Score"
+//     }],
+
+//     "graphs": [{
+//         "balloonText": "[[category]]: <b>[[value]]</b>",
+//         "fillColorsField": "color",
+//         "fillAlphas": 1,
+//         "lineAlpha": 0.1,
+//         "type": "column",
+//         "valueField": "value"
+//     }],
+//     //3d effects
+//     "depth3D": 20,
+//     "angle": 30,
+    
+   
+//     "chartCursor": {
+//         "categoryBalloonEnabled": false, //bottom row cursor
+//         "cursorAlpha": 0, //line cursor
+//         "zoomable": false
+//     },
+    
+//     dataProvider: chartData,
+
+//     "categoryField": "year", // must match with chart Data
+//     "categoryAxis": {
+//         "gridPosition": "start",
+//         "labelRotation": 45
+//     }
+// };
+
+//     AmCharts.ready(function () {
+//         // var chart1 = AmCharts.makeChart("chart1div", $.extend(true, {}, AMCHART_SERIAL_CONFIG, { "theme": "dark" }) );
+// 		var chart2 = AmCharts.makeChart("chart2div", $.extend(true, {}, AMCHART_SERIAL_CONFIG2, { "theme": "light" }) );
+
+//     });
+
+
+$.ajax({
+    type: 'GET',
+    url: 'https://api.stormp'
+    },
+    success: function () {
+        console.log("success")
+    }
+});
+
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+    var hash = btoa(tok);
+    return 'Basic ' + hash;
+}
+
+</script>
+
+
+
+
+
+	</body>
+</html>

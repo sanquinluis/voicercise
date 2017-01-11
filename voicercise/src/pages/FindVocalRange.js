@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import { LoginLink } from 'react-stormpath';
 import DocumentTitle from 'react-document-title';
 
+import axios from "axios";
+
 class StaffDisplay extends React.Component{
 	constructor(props){
 		super(props);
@@ -16,7 +18,6 @@ class StaffDisplay extends React.Component{
 			octave: this.props.octave
 		}
 	}
-
 
 
 	componentDidMount(){
@@ -57,7 +58,7 @@ class StaffDisplay extends React.Component{
 			lineRight.setContext(context).draw();
 		}.bind(this)
 
-		console.log(this);
+		// console.log(this);
 
 		this.drawNote = function(note_name, octave){
 		
@@ -117,6 +118,11 @@ class NoteDisplay extends React.Component {
 
 export default class FindVocalRange extends React.Component {
 
+	static contextTypes = {
+    authenticated: React.PropTypes.bool,
+    user: React.PropTypes.object
+  };
+
 	constructor(props) {
 	    super(props);
 	    this.state = {
@@ -128,6 +134,7 @@ export default class FindVocalRange extends React.Component {
 					  	lowestnote: 'C4',
 					  	highestnote: 'C4',
 					  	rangeFound: false
+
 					  };
 		this.playTone = this.playTone.bind(this);
 		this.stopTone = this.stopTone.bind(this);
@@ -135,6 +142,7 @@ export default class FindVocalRange extends React.Component {
 		this.displayNote = this.displayNote.bind(this);
 		this.goUp = this.goUp.bind(this);
 		this.startover = this.startover.bind(this);
+		this.postRange = this.postRange.bind(this);
 
   	}
 
@@ -169,9 +177,12 @@ export default class FindVocalRange extends React.Component {
 	halfstep(){
 		var tone = this.state.notes[this.state.noteIndex]+this.state.octave;
 
+		
+
 		console.log("Run halfstep");
 		if(this.state.isDesc){
-			this.setState({lowestnote: tone})
+			if(this.state.lowestnote != "C0")
+				this.setState({lowestnote: tone})
 
 			if(this.state.noteIndex == 0){
 	
@@ -186,7 +197,8 @@ export default class FindVocalRange extends React.Component {
 			}
 		}
 		else{
-			this.setState({highestnote: tone})
+			if(this.state.highestnote != "B10")
+				this.setState({highestnote: tone})
 
 			if(this.state.noteIndex == this.state.notes.length-1){
 				this.setState({
@@ -225,12 +237,22 @@ export default class FindVocalRange extends React.Component {
 		})
 	}
 
+	postRange(){
+		var data = {username: this.context.user.username,
+					lowestVoice: this.state.lowestnote,
+					highestVoice: this.state.highestnote}
+
+		axios.post('/setrange', data).then(function(response){
+			console.log(response)
+		})
+	}
+
 	render(){
+
 		return(
 			<DocumentTitle title="Voicercise / Find your range">
 
 				<div>
-					<Header note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
 					
 					<StaffDisplay note={this.state.notes[this.state.noteIndex]} octave={this.state.octave} />
 					<NoteDisplay display={this.displayNote} />
@@ -245,7 +267,7 @@ export default class FindVocalRange extends React.Component {
 					:
 					<div>
 						<button onClick={this.startover}>Start over</button>
-						<Link to="#"><button>Confirm</button></Link>
+						<button onClick={this.postRange}>Confirm</button>
 					</div>
 					}
 				</div>

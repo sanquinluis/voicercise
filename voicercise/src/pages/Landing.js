@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router'
 import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
 
-// import '../../css/style.css';
+import css from '../static/css/style.css';
+
 
 class Landing extends Component {
   render() {
@@ -16,6 +17,7 @@ class Landing extends Component {
   color: 'white'
 }}>
           <h2>Voicercise</h2>
+          <img src={`/images/${'github.png'}`} />
         </div>
         <div style={{paddingTop:'100px'}}>
           <iframe width="560" height="315" 
